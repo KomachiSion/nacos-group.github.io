@@ -6,9 +6,9 @@ export const SITE_DESCRIPTION = 'Welcome to my website!';
 
 // 吊顶提示文案
 export const TOPBAR = {
-    "text": "铭师堂的云原生升级实践",
-    "mobileText": "铭师堂的云原生升级实践",
-    "link": "https://nacos.io/blog/nacos-gvr7dx_awbbpb_rcexb7h4kq8u9ei9/?spm=5238cd80.66ce2cd4.0.0.237cf2120E3Lm5",
+    "text": "Higress 助力各行各业安全可靠接入DeepSeek",
+    "mobileText": "Higress 助力各行各业安全可靠接入DeepSeek",
+    "link": "https://higress.cn/blog/higress-gvr7dx_awbbpb_hghqht52gp0ugxtk/?spm=36971b57.2ef5001f.0.0.2a932c1fNagvT3\u0026source=blog",
     "target": "_blank",
     "display": true
 }
