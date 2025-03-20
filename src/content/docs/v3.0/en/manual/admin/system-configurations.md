@@ -3,7 +3,7 @@ title: 系统参数
 keywords: [ Nacos,系统参数 ]
 description: Nacos系统参数介绍
 sidebar:
-  order: 4
+  order: 6
 ---
 
 # Nacos 系统参数介绍
@@ -25,25 +25,22 @@ JAVA_OPT="${JAVA_OPT} -Dnacos.home=${BASE_DIR}"
 
 #### 1.1.1. 基础参数
 
-| 参数名	                                         | 含义	                                                                                        | 可选值	             | 默认值        | 
-|----------------------------------------------|--------------------------------------------------------------------------------------------|------------------|------------|
-| nacos.home(-D)                               | Nacos的根目录                                                                                  | 目录路径             | Nacos安装的目录 | 
-| nacos.standalone(-D)                         | 是否在单机模式                                                                                    | true/false       | false      |
-| nacos.functionMode(-D)                       | 启动模式，支持只启动某一个模块，不设置时所有模块都会启动                                                               | config/naming/空  | 空          | 
-| nacos.server.ip(-D)                          | Nacos服务端的IP，优先级比`nacos.inetutils.ip-address`更高，如果配置了该参数，则`nacos.inetutils.ip-address`不再生效  | 本机IP             | null       |
-| nacos.inetutils.prefer-hostname-over-ip      | 节点优先使用hostname作为本机ip，若为`true`时，`cluster.conf`里是否应该填`hostname`                              | true/false       | false      | 
-| nacos.inetutils.ip-address                   | 本机IP，该参数设置后，将会使用这个IP去`cluster.conf`里进行匹配，请确保这个IP的值在`cluster.conf`里是存在的                     | 本机IP             | null       |
-| nacos.core.sys.basic.processors              | 指定服务端的处理器个数，用于部分虚拟化场景，防止读取CPU个数时读取到错误的值，导致线程数过多或过少                                         | 正整数              | CPU个数      |
-| nacos.core.monitor.topn.enabled              | Nacos Server topN 监控统计能力开关                                                                 | true/false       | true       |
-| nacos.core.monitor.topn.count                | Nacos Server topN 监控统计 top的个数，如如配置为10，表示top10的配置和服务                                        | 正整数              | 10         |
-| nacos.core.snowflake.worker-id               | Nacos Server 的snowflake workerId                                                           | 正整数              | -1         |
-| nacos.core.param.check.enabled               | Nacos Server 参数校验能力开关，开启后将会校验请求时的参数是否符合规范，不符合将被拦截，详情查看 [参数校验](../user/parameters-check.md) | true/false       | true       |
-| nacos.server.main.port                       | Nacos Server 的端口                                                                           | 正整数              | 8848       |
-| nacos.server.contextPath                     | Nacos Server 的Servlet上下文路径                                                                 | 正则表达式            | /nacos     |
-| spring.config.additional-location            | Nacos Server 的额外配置文件路径，除`{nacos.home}/conf/application.properties`外，用户可以添加额外的配置文件          | 文件路径，多个文件路径用逗号分隔 | null       |
-| nacos.core.api.compatibility.client.enabled  | Nacos是否兼容旧版本OpenAPI                                                                        | true/false       | true       |
-| nacos.core.api.compatibility.admin.enabled   | Nacos是否兼容旧版本AdminAPI                                                                       | true/false       | false      |
-| nacos.core.api.compatibility.console.enabled | Nacos是否兼容旧版本ConsoleAPI                                                                     | true/false       | false      |
+| 参数名	                                    | 含义	                                                                                        | 可选值	             | 默认值        | 
+|-----------------------------------------|--------------------------------------------------------------------------------------------|------------------|------------|
+| nacos.home(-D)                          | Nacos的根目录                                                                                  | 目录路径             | Nacos安装的目录 | 
+| nacos.standalone(-D)                    | 是否在单机模式                                                                                    | true/false       | false      |
+| nacos.functionMode(-D)                  | 启动模式，支持只启动某一个模块，不设置时所有模块都会启动                                                               | config/naming/空  | 空          | 
+| nacos.server.ip(-D)                     | Nacos服务端的IP，优先级比`nacos.inetutils.ip-address`更高，如果配置了该参数，则`nacos.inetutils.ip-address`不再生效  | 本机IP             | null       |
+| nacos.inetutils.prefer-hostname-over-ip | 节点优先使用hostname作为本机ip，若为`true`时，`cluster.conf`里是否应该填`hostname`                              | true/false       | false      | 
+| nacos.inetutils.ip-address              | 本机IP，该参数设置后，将会使用这个IP去`cluster.conf`里进行匹配，请确保这个IP的值在`cluster.conf`里是存在的                     | 本机IP             | null       |
+| nacos.core.sys.basic.processors         | 指定服务端的处理器个数，用于部分虚拟化场景，防止读取CPU个数时读取到错误的值，导致线程数过多或过少                                         | 正整数              | CPU个数      |
+| nacos.core.monitor.topn.enabled         | Nacos Server topN 监控统计能力开关                                                                 | true/false       | true       |
+| nacos.core.monitor.topn.count           | Nacos Server topN 监控统计 top的个数，如如配置为10，表示top10的配置和服务                                        | 正整数              | 10         |
+| nacos.core.snowflake.worker-id          | Nacos Server 的snowflake workerId                                                           | 正整数              | -1         |
+| nacos.core.param.check.enabled          | Nacos Server 参数校验能力开关，开启后将会校验请求时的参数是否符合规范，不符合将被拦截，详情查看 [参数校验](../user/parameters-check.md) | true/false       | true       |
+| nacos.server.main.port                  | Nacos Server 的端口，替代之前的`server.port`                                                        | 正整数              | 8848       |
+| nacos.server.contextPath                | Nacos Server 的Web Servlet上下文路径, 替代之前的`server.servlet.context-path`                         | 任意路径             | /nacos     |
+| spring.config.additional-location       | Nacos Server 的额外配置文件路径，除`{nacos.home}/conf/application.properties`外，用户可以添加额外的配置文件          | 文件路径，多个文件路径用逗号分隔 | null       | 
 
 #### 1.1.2. 数据库
 
@@ -64,7 +61,7 @@ JAVA_OPT="${JAVA_OPT} -Dnacos.home=${BASE_DIR}"
 和`db.password`没有指定下标时，因为当前机制会根据`,`进行切割。所以当用户名或者密码存在`,`时，会把`,`
 切割后前面的值当成最后的值进行认证，会导致认证失败。
 
-Nacos提供了一个方法能够配置HikariCP连接池。
+Nacos从1.3版本开始使用HikariCP连接池，但在1.4.1版本前，连接池配置由系统默认值定义，无法自定义配置。在1.4.1后，提供了一个方法能够配置HikariCP连接池。
 `db.pool.config`为配置前缀，`xxx`为实际的hikariCP配置，如`db.pool.config.connectionTimeout`
 或`db.pool.config.maximumPoolSize`等。更多hikariCP的配置请查看[HikariCP](https://github.com/brettwooldridge/HikariCP)
 需要注意的是，url,user,password会由`db.url.n`,`db.user`,`db.password`覆盖，driverClassName则是默认的MySQL8 driver（该版本mysql
@@ -221,17 +218,29 @@ driver支持mysql5.x)
 
 ### 1.9. 控制台
 
-#### 1.9.1. 基础参数
+| 参数名	                                     | 含义	                                                                             | 可选值	                | 默认值      | 
+|------------------------------------------|---------------------------------------------------------------------------------|---------------------|----------|
+| nacos.console.port                       | Nacos 控制台端口                                                                     | 端口号                 | 8080     |
+| nacos.console.contextPath                | Nacos 控制台上下文路径                                                                  | 上下文路径               | ""       |
+| nacos.console.remote.server.context-path | Nacos 控制台访问的远程Nacos服务上下文路径，仅在`console`独立控制台部署模式下有效，对应`nacos.server.contextPath` | Nacos 服务的 Web，上下文路径 | "/nacos" |
+| nacos.console.ui.enabled                 | 控制台是否开启UI界面                                                                     | true/false          | true     |                 
 
-| 参数名	                      | 含义	                | 可选值	       | 默认值  | 
-|---------------------------|--------------------|------------|------|
-| nacos.console.port        | Nacos控制台端口         | 正整数        | 8080 |
-| nacos.console.contextPath | Nacos的Servlet上下文路径 | 字符串        | 空字符串 |
-| nacos.console.ui.enabled  | Nacos控制台是否开启UI     | true/false | true |
+### 1.10. 其他短期参数
+
+Nacos 中存在部分用于兼容旧版本或平滑升级使用的参数配置，在对应版本中有效，在未来版本中会移除，请根据版本进行配置。
+
+| 参数名	                                         | 含义	                                                                                                       | 计划版本        | 可选值	       | 默认值   | 
+|----------------------------------------------|-----------------------------------------------------------------------------------------------------------|-------------|------------|-------|
+| nacos.core.api.compatibility.client.enabled  | Nacos Client API（OpenAPI） 是否开启兼容模式，开启时将允许使用老版本Client API（OpenAPI），建议暂时打开，并尽快推动客户端版本升级到2.X以上               | 3.0.0~3.1.0 | true/false | true  |
+| nacos.core.api.compatibility.admin.enabled   | Nacos Admin API（OpenAPI） 是否开启兼容模式，开启时将允许使用老版本Admin API（OpenAPI），不建议打开                                     | 3.0.0~3.1.0 | true/false | false |
+| nacos.core.api.compatibility.console.enabled | Nacos Console API（OpenAPI） 是否开启兼容模式，开启时将允许使用老版本Console API（OpenAPI）），不建议打开                                | 3.0.0~3.1.0 | true/false | false |
+| nacos.config.gray.compatible.model           | Nacos Beta灰度配置是否使用兼容模式，开启时将对beta灰度配置进行双写兼容和迁移，`2.5.0`版本开始支持。关闭后对Beta灰度配置的性能和启动速度有大幅提升，建议升级时打开，稳定后关闭       | 2.5.0~3.1.0 | true/false | true  |
+| nacos.gray.migrate.executor.multi            | Nacos 灰度配置迁移线程池大小。在`nacos.config.gray.compatible.model=true`时有效，用于启动时迁移Beta灰度配置到新版本灰度配置的线程数，越高效率好，启动速度越快。 | 2.5.0~3.1.0 | 任意正整数      | 8     |
+| nacos.config.namespace.compatible.mode       | Nacos 命名空间兼容模式，开启时，Nacos会自动将`namespaceId=""`的配置，自动迁移到`namespaceId="public"`下。建议升级时打开，稳定后关闭                | 3.0.0~3.1.0 | true/false | true  |
+| nacos.namespace.migrate.retry.times          | Nacos 命名空间迁移重试次数，避免因网络抖动等问题导致迁移失败，在`nacos.namespace.compatible.mode=true`时有效                              | 3.0.0~3.1.0 | 任意正整数      | 3     |
+| nacos.namespace.migrate.batch.size           | Nacos 命名空间迁移一次批量迁移的配置数量，在`nacos.namespace.compatible.mode=true`时有效，值越大效率越高，但对数据库的压力也越大                    | 3.0.0~3.1.0 | 任意正整数      | 100   |
 
 ## 2. 镜像环境变量
-
-> Nacos 3.0.0-ALPHA.2 暂不提供镜像，该部分代3.0.0镜像版本发布后进行更新。
 
 属性配置列表
 
